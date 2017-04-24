@@ -12,7 +12,7 @@
     	</body>
     <script>
 
-    if (Cookies.getJSON('session') != null){
+    if (Cookies.getJSON('session') != undefined){
         PDK.setSession(Cookies.getJSON('session'));
         setUp();
         
