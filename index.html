@@ -12,6 +12,8 @@
     <script>
     window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
     </script>
+    <script src="https://assets.pinterest.com/sdk/sdk.js"></script>
+    <script src="js/js.cookie.js"></script>
     <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/imagesloaded.pkgd.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
@@ -20,8 +22,8 @@
 
 <body>
     <header>
-        <input value="" id="username"></input>
-        <input value="" id="boardname"></input>
+        <h1><a href="#" id="login">Login</a><span id="username"></span></h1>
+        <aside class="boards"><div class="boardnames"></div></aside>
         <aside><a href="#" id="small" class="currGrid">small</a> / <a href="#" id="big">big</a></aside>
         <aside><a href="#" id="light" class="currLight">light</a> / <a href="#" id="dark">dark</a></aside>
         <aside class="right"><a href="#" id="info" class="info">?</a></aside>

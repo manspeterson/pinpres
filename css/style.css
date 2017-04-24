@@ -7,7 +7,8 @@ body {
         color: black;
      
     }
-    
+
+
     a {
         text-decoration: none;
         color: black;
@@ -61,8 +62,7 @@ body {
     	opacity: 0;
     }
     
-    input,
-    header aside {
+    h1, header aside {
         outline: none;
         font-size: 1.2vw;
         font-weight: 300;
@@ -77,6 +77,16 @@ body {
     	width: 14%;
     	text-align: right;
     	margin-right: 2%;
+    }
+
+    .boardnames {
+        position:absolute;
+        top: 0;
+    }
+    .boardnames a {
+        display:block;
+        width: auto;
+        line-height: 1.5;
     }
     
     .grid-item {

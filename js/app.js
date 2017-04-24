@@ -1,3 +1,72 @@
+if (Cookies.getJSON('session') != undefined){
+    PDK.setSession(Cookies.getJSON('session'));
+    setUp();
+    
+}
+
+$('#logout').on('click', logout);
+$('#login').on('click', pinterest);
+function logout(){
+    Cookies.remove('session');
+    Cookies.remove('username');
+    PDK.logout();
+    $('#username').text('');
+    $('#login').show();
+    $('.boardname').html('');
+    $.grid.masonry('remove', $('.grid-items'));
+};
+
+function setUp(){
+    PDK.me('boards', { fields: 'name' }, function(response){
+        $('#username').text(Cookies.get('username'));
+        $('#login').hide();
+        for (x in response.data) {
+            a = $('<a href="#"/>');
+            a.text(response.data[x].name.toLowerCase());
+            $('.boardname').first().append(a);
+        }
+        $('.boardname a').on('click', function(){
+            $(this).addClass('currentBoard');
+            getPins(Cookies.get('username'),$(this).text());
+        });
+        $('.boardname a').first().trigger('click');
+    });
+
+}
+function pinterest(){
+
+
+        PDK.init({
+            appId: "4896841192414656696",
+            cookie: true
+        });
+
+        //login
+        PDK.login({ scope : 'read_relationships,read_public,read_private' }, function(response){
+            if (!response || response.error) {
+              //  alert('Error occurred');
+            } else {
+               // console.log(JSON.stringify(response));
+            }
+        //get board info
+        var pins = [];
+        PDK.me(function(response){
+            if (!response || response.error) {
+                alert('Error occurred');
+            } else {
+                Cookies.set('session', PDK.getSession());
+                Cookies.set('username', response.data.url.replace("https://www.pinterest.com/", '').replace('/',''));
+                setUp();
+            }
+        });
+        //end get board info
+        });
+        //end login
+   
+
+}
+
+
 // var e = jQuery.Event("keydown");
 // e.which = 18; // # Some key code value
 // init Masonry
@@ -131,9 +200,8 @@ $('main').on('click', 'img', function() {
 });
 
 
-function getPins() {
-    username = $('#username').val();
-    boardname = $('#boardname').val();
+function getPins(username, boardname) {
+    $grid.masonry('remove', $('.grid-item'));
     var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
     $.ajax({
         method: "GET",
@@ -194,11 +262,11 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 $('#boardname').on('keypress', function(e) {
     if (e.which === 13) {
-
+        // getPins();
         //Disable textbox to prevent multiple submit
-        base = window.location.href.split('?')[0];
-        newURL = base + '?u=' + $('#username').val() + '&b=' + $('#boardname').val();
-        window.location.href = newURL;
+        // base = window.location.href.split('?')[0];
+        // newURL = base + '?u=' + $('#username').val() + '&b=' + $('#boardname').val();
+        // window.location.href = newURL;
 
         //Do Stuff, submit, etc..
     }
@@ -211,7 +279,7 @@ if ((getUrlParameter('u') != false) && (getUrlParameter('b') != false)) {
     $('#username').val('fridamysqvist');
     $('#boardname').val('insp');
 }
-getPins();
+// getPins('fridamysqvist', 'insp');
 
 
 
