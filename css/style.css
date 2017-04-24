@@ -12,16 +12,27 @@ body {
     a {
         text-decoration: none;
         color: black;
+        border-bottom: 0.1vw solid;
+        border-color: white;
     }
     
     .dark a, .dark input {
         color: white;
+        border-color: rgb(15, 15, 15);
     }
     
     a:hover,
     .currGrid,
-    .currLight {
-        border-bottom: 0.1vw solid;
+    .currLight,
+    .currentBoard {
+        border-color: black;
+    }
+
+    .dark a:hover,
+    .dark .currGrid,
+    .dark .currLight,
+    .dark .currentBoard {
+        border-color: white;
     }
     
     input {
