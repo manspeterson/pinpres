@@ -1,0 +1,163 @@
+body {
+        transition: background 0.25s linear;
+        font-family: Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        font-size: 1.2vw;
+        color: black;
+     
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .dark a, .dark input {
+        color: white;
+    }
+    
+    a:hover,
+    .currGrid,
+    .currLight {
+        border-bottom: 0.1vw solid;
+    }
+    
+    input {
+        background: none;
+    }
+    
+    body.dark {
+        background: rgb(15, 15, 15);
+        color: white;
+    }
+
+
+    
+    .colour .grid-item img {
+        opacity: 0;
+    }
+    
+    
+    main {
+        margin-left: 5%;
+        margin-top: 25%;
+        width: 95%;
+    }
+
+    header {
+    	margin-top: 0;
+    	margin-left: 2%;
+    	margin-bottom: 0;
+    	position: fixed;
+    	top: 4vw;
+    	width: 95%;
+    	z-index: 100;
+    	transition: opacity 0.2s ease-out;
+    }
+
+    header.nav-down {
+    	/*top: -5%;*/
+    	opacity: 0;
+    }
+    
+    input,
+    header aside {
+        outline: none;
+        font-size: 1.2vw;
+        font-weight: 300;
+        margin: 0 4%;
+        width: 11.50%;
+        border: none;
+        display: inline-block;
+        padding: 0;
+    }
+
+    header aside.right {
+    	width: 14%;
+    	text-align: right;
+    	margin-right: 2%;
+    }
+    
+    .grid-item {
+        line-height: 0;
+        width: 8%;
+        height: auto;
+        float: left;
+        margin: 4%;
+    }
+    
+    .grid-image {
+        width: 100%;
+        height: auto;
+        cursor: zoom-in;
+        transition-duration: 0.2s;
+    }
+    
+    .grid-image:hover {
+        transform: scale(1.4);
+        z-index: 100;
+    }
+    
+    .grid-div-image {
+        height: 100%;
+    }
+    
+    .grid-sizer {
+        width: 8%;
+    }
+    
+    .grid-gutter {
+        width: 3.75%;
+    }
+    
+    .big .grid-sizer,
+    .big .grid-item {
+        width: 22%;
+    }
+    
+    .big .grid-gutter {
+        width: 2%;
+    }
+    
+    .big .grid-image:hover {
+        transform: scale(1.1);
+    }
+    
+    #full {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.99);
+        display: none;
+        cursor: zoom-out;
+        -webkit-cursor: zoom-out;
+        z-index: 1000;
+    }
+    
+    .dark #full {
+        background-color: rgba(15, 15, 15, 0.99);
+    }
+    
+    #overlay {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    
+    #overlay td {
+        vertical-align: middle;
+        text-align: center;
+    }
+    
+    #full img {
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        max-width: 90vw;
+        max-height: 90vh;
+    }
