@@ -93,11 +93,16 @@ body {
     .boardnames {
         position:absolute;
         top: 0;
+        width: 15.50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .boardnames a {
         display:inline-block;
-        margin-right: 100%;
         line-height: 1.0;
+        
+    }
+    .boardname {
         margin-bottom: 3%;
     }
     

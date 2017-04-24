@@ -21,9 +21,11 @@ function setUp(){
         $('#username').text(Cookies.get('username'));
         $('#login').hide();
         for (x in response.data) {
+            div = $('<div class="boardname"/>');
             a = $('<a href="#"/>');
             a.text(response.data[x].name.toLowerCase());
-            $('.boardnames').first().append(a);
+            div.append(a);
+            $('.boardnames').first().append(div);
         }
         $('.boardnames a').on('click', function(){
             $('.currentBoard').removeClass('currentBoard');
