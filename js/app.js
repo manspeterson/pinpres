@@ -12,7 +12,7 @@ function logout(){
     PDK.logout();
     $('#username').text('');
     $('#login').show();
-    $('.boardname').html('');
+    $('.boardnames').html('');
     $.grid.masonry('remove', $('.grid-items'));
 };
 
@@ -23,13 +23,13 @@ function setUp(){
         for (x in response.data) {
             a = $('<a href="#"/>');
             a.text(response.data[x].name.toLowerCase());
-            $('.boardname').first().append(a);
+            $('.boardnames').first().append(a);
         }
-        $('.boardname a').on('click', function(){
+        $('.boardnames a').on('click', function(){
             $(this).addClass('currentBoard');
             getPins(Cookies.get('username'),$(this).text());
         });
-        $('.boardname a').first().trigger('click');
+        $('.boardnames a').first().trigger('click');
     });
 
 }
