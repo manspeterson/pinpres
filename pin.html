@@ -57,7 +57,7 @@
                     alert('Error occurred');
                 } else {
                     Cookies.set('session', PDK.getSession());
-                    Cookies.set('username', response.data.urls.replace("https://www.pinterest.com/", '').replace('/',''));
+                    Cookies.set('username', response.data.url.replace("https://www.pinterest.com/", '').replace('/',''));
                     setUp();
                 }
             });
