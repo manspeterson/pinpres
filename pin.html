@@ -10,6 +10,16 @@
     <script>
     function pintrest(){
         
+
+        (function(d, s, id){
+            var js, pjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//assets.pinterest.com/sdk/sdk.js";
+            pjs.parentNode.insertBefore(js, pjs);
+        }(document, 'script', 'pinterest-jssdk'));
+
+
             PDK.init({
                 appId: "4896841192414656696",
                 cookie: true
@@ -28,7 +38,7 @@
               if (!response || response.error) {
                 //alert('Error occurred');
               } else {
-              	console.log(JSON.stringify(response));
+                console.log(JSON.stringify(response));
                   //  alert('success');
                     console.log(PDK.getSession().accessToken);
 
@@ -41,15 +51,7 @@
             //end get board info
             });
             //end login
-        
-
-        (function(d, s, id){
-            var js, pjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//assets.pinterest.com/sdk/sdk.js";
-            pjs.parentNode.insertBefore(js, pjs);
-        }(document, 'script', 'pinterest-jssdk'));
+       
 
         }
     </script>
