@@ -6,10 +6,35 @@
         <script src="js/js.cookie.js"></script>
     	</head>
     	<body>
-    	<p onclick="pintrest()">Click me</p>
+    	<p onclick="pintrest()" id="username">Login</p>
+        <p id="logout">Logout</p>
     	<div id="result"></div>
     	</body>
     <script>
+
+    if (Cookies.getJSON('session') != null){
+        PDK.setSession(Cookies.getJSON('session'));
+        setUp();
+        
+    }
+
+    $('#logout').on('click', function(){
+        Cookies.remove('session');
+        Cookies.remove('username');
+        PDK.logout();
+        $('username').text('Login');
+    })
+
+    function setUp(){
+        PDK.me('boards', { fields: 'name' }, function(data){
+            $('#username').text(Cookies.get('username'));
+            for (x in data) {
+                a = $('<a href="#"/>');
+                a.text(data[x].name);
+                $('#result').append(a);
+            }
+        });
+    }
     function pintrest(){
 
 
@@ -27,19 +52,28 @@
                 }
             //get board info
             var pins = [];
-            PDK.request('/v1/me/', function (response) {
-              if (!response || response.error) {
-                //alert('Error occurred');
-              } else {
-                console.log(JSON.stringify(response));
-                  //  alert('success');
-                    console.log(PDK.getSession().accessToken);
+            PDK.me(function(response){
+                if (!response || response.error) {
+                    alert('Error occurred');
+                } else {
                     Cookies.set('session', PDK.getSession());
-                    var yahoo = $( "#result" ).load( "https://api.pinterest.com/v1/me/?access_token="+PDK.getSession().accessToken+"&fields=counts" );
-                    console.log(yahoo);
+                    Cookies.set('username', response.data.urls.replace("https://www.pinterest.com/", '').replace('/',''));
+                    setUp();
+                }
+            }
+            // PDK.request('/v1/me/', function (response) {
+            //   if (!response || response.error) {
+            //     //alert('Error occurred');
+            //   } else {
+            //     console.log(JSON.stringify(response));
+            //       //  alert('success');
+            //         console.log(PDK.getSession().accessToken);
+            //         Cookies.set('session', PDK.getSession());
+            //         var yahoo = $( "#result" ).load( "https://api.pinterest.com/v1/me/?access_token="+PDK.getSession().accessToken+"&fields=counts" );
+            //         console.log(yahoo);
                     
-              }
-            });
+            //   }
+            // });
 
             //end get board info
             });
