@@ -34,10 +34,10 @@
                 console.log(JSON.stringify(response));
                   //  alert('success');
                     console.log(PDK.getSession().accessToken);
-                    Cookies.set('token', PDK.getSession().accessToken);
+                    Cookies.set('session', PDK.getSession());
                     var yahoo = $( "#result" ).load( "https://api.pinterest.com/v1/me/?access_token="+PDK.getSession().accessToken+"&fields=counts" );
                     console.log(yahoo);
-                    PDK.logout();
+                    
               }
             });
 
