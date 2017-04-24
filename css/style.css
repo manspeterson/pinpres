@@ -84,9 +84,10 @@ body {
         top: 0;
     }
     .boardnames a {
-        display:block;
-        width: auto;
-        line-height: 1.5;
+        display:inline.block;
+        margin-right: 100%;
+        line-height: 1.0;
+        margin-bottom: 3%;
     }
     
     .grid-item {

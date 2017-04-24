@@ -26,8 +26,9 @@ function setUp(){
             $('.boardnames').first().append(a);
         }
         $('.boardnames a').on('click', function(){
+            $('.currentBoard').removeClass('currentBoard');
             $(this).addClass('currentBoard');
-            getPins(Cookies.get('username'),$(this).text());
+            getPins(Cookies.get('username'),$(this).text().replace('.','').replace(' '),'-'));
         });
         $('.boardnames a').first().trigger('click');
     });
@@ -37,7 +38,7 @@ function pinterest(){
 
 
         PDK.init({
-            appId: "4896841192414656696",
+            appId: "4897004159634521129",
             cookie: true
         });
 
