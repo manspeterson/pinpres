@@ -26,11 +26,11 @@
     })
 
     function setUp(){
-        PDK.me('boards', { fields: 'name' }, function(data){
+        PDK.me('boards', { fields: 'name' }, function(response){
             $('#username').text(Cookies.get('username'));
-            for (x in data) {
+            for (x in response.data) {
                 a = $('<a href="#"/>');
-                a.text(data[x].name);
+                a.text(data[x].response.data[x].name.toLowerCase());
                 $('#result').append(a);
             }
         });
