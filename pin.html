@@ -2,6 +2,8 @@
     	<head>
     	<title>Pintrest Login</title>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="//assets.pinterest.com/sdk/sdk.js"></script>
+        <script src="/js/js.cookie.js"></script>
     	</head>
     	<body>
     	<p onclick="pintrest()">Click me</p>
@@ -9,15 +11,6 @@
     	</body>
     <script>
     function pintrest(){
-        
-
-        (function(d, s, id){
-            var js, pjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//assets.pinterest.com/sdk/sdk.js";
-            pjs.parentNode.insertBefore(js, pjs);
-        }(document, 'script', 'pinterest-jssdk'));
 
 
             PDK.init({
@@ -41,7 +34,7 @@
                 console.log(JSON.stringify(response));
                   //  alert('success');
                     console.log(PDK.getSession().accessToken);
-
+                    Cookies.set('token', PDK.getSession().accessToken);
                     var yahoo = $( "#result" ).load( "https://api.pinterest.com/v1/me/?access_token="+PDK.getSession().accessToken+"&fields=counts" );
                     console.log(yahoo);
                     PDK.logout();
