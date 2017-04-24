@@ -13,7 +13,7 @@ function logout(){
     $('#username').text('');
     $('#login').show();
     $('.boardnames').html('');
-    $.grid.masonry('remove', $('.grid-items'));
+    $grid.masonry('remove', $('.grid-items'));
 };
 
 function setUp(){
