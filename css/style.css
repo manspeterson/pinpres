@@ -12,27 +12,55 @@ body {
     a {
         text-decoration: none;
         color: black;
-        border-bottom: 0.1vw solid;
-        border-color: white;
+        /*border-bottom: 0.1vw solid;*/
+        /*border-color: white;*/
     }
     
     .dark a, .dark input {
         color: white;
-        border-color: rgb(15, 15, 15);
+        /*border-color: rgb(15, 15, 15);*/
     }
     
     a:hover,
     .currGrid,
     .currLight,
     .currentBoard {
-        border-color: black;
+          /*// Use the default underline for browsers that*/
+          /*// don’t support @supports (<= IE11)*/
+          text-decoration: underline;
+          -webkit-text-decoration-skip: ink;
+          
+          /*// Use the filter in browsers that support @supports, but aren’t Safari*/
+          @supports not (-webkit-text-decoration-skip: objects) {
+            filter: url('#svg-underline-black');
+            text-decoration: none;
+          }
+
+          /*// And then disable the filter in Edge and*/
+          /*// use the default underline instead*/
+          @supports (-ms-ime-align: auto) {
+            filter: none;
+            text-decoration: underline;
+          }
+
     }
 
     .dark a:hover,
     .dark .currGrid,
     .dark .currLight,
     .dark .currentBoard {
-        border-color: white;
+         /*// Use the filter in browsers that support @supports, but aren’t Safari*/
+          @supports not (-webkit-text-decoration-skip: objects) {
+            filter: url('#svg-underline-white');
+            text-decoration: none;
+          }
+
+          /*// And then disable the filter in Edge and*/
+          /*// use the default underline instead*/
+          @supports (-ms-ime-align: auto) {
+            filter: none;
+            text-decoration: underline;
+          }
     }
     
     input {
@@ -99,11 +127,11 @@ body {
     }
     .boardnames a {
         display:inline-block;
-        line-height: 1.0;
+        
         
     }
     .boardname {
-        margin-bottom: 3%;
+        margin-bottom: 2%;
     }
     
     .grid-item {
@@ -187,4 +215,11 @@ body {
         height: auto;
         max-width: 90vw;
         max-height: 90vh;
+    }
+
+    .visuallyHidden {
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      width: 1px;
     }
