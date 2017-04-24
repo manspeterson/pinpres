@@ -28,7 +28,7 @@ function setUp(){
         $('.boardnames a').on('click', function(){
             $('.currentBoard').removeClass('currentBoard');
             $(this).addClass('currentBoard');
-            getPins(Cookies.get('username'),$(this).text().replace('.','').replace(' '),'-'));
+            getPins(Cookies.get('username'),$(this).text().replace('.','').replace(' ','-'));
         });
         $('.boardnames a').first().trigger('click');
     });
