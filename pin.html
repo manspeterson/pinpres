@@ -9,7 +9,7 @@
     	</body>
     <script>
     function pintrest(){
-        window.pAsyncInit = function() {
+        
             PDK.init({
                 appId: "4896841192414656696",
                 cookie: true
@@ -20,7 +20,7 @@
                 if (!response || response.error) {
                   //  alert('Error occurred');
                 } else {
-                   console.log(JSON.stringify(response));
+                   // console.log(JSON.stringify(response));
                 }
             //get board info
             var pins = [];
@@ -41,7 +41,7 @@
             //end get board info
             });
             //end login
-        };
+        
 
         (function(d, s, id){
             var js, pjs = d.getElementsByTagName(s)[0];
