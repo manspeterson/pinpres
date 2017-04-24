@@ -25,23 +25,10 @@ body {
     .currGrid,
     .currLight,
     .currentBoard {
-          /*// Use the default underline for browsers that*/
-          /*// don’t support @supports (<= IE11)*/
           text-decoration: underline;
           -webkit-text-decoration-skip: ink;
           
-          /*// Use the filter in browsers that support @supports, but aren’t Safari*/
-          @supports not (-webkit-text-decoration-skip: objects) {
-            filter: url('#svg-underline-black');
-            text-decoration: none;
-          }
-
-          /*// And then disable the filter in Edge and*/
-          /*// use the default underline instead*/
-          @supports (-ms-ime-align: auto) {
-            filter: none;
-            text-decoration: underline;
-          }
+      
 
     }
 
@@ -49,18 +36,6 @@ body {
     .dark .currGrid,
     .dark .currLight,
     .dark .currentBoard {
-         /*// Use the filter in browsers that support @supports, but aren’t Safari*/
-          @supports not (-webkit-text-decoration-skip: objects) {
-            filter: url('#svg-underline-white');
-            text-decoration: none;
-          }
-
-          /*// And then disable the filter in Edge and*/
-          /*// use the default underline instead*/
-          @supports (-ms-ime-align: auto) {
-            filter: none;
-            text-decoration: underline;
-          }
     }
     
     input {
@@ -215,11 +190,4 @@ body {
         height: auto;
         max-width: 90vw;
         max-height: 90vh;
-    }
-
-    .visuallyHidden {
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      width: 1px;
     }
