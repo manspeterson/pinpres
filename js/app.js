@@ -384,10 +384,4 @@ if (givenParameters()) {
     }
 }
 
-if (Cookies.getJSON('session') != undefined){
-    PDK.setSession(Cookies.getJSON('session'));
-    getMyBoards();
-    
-}
-
 
