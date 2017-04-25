@@ -34,6 +34,7 @@ if (givenParameters()) {
         }
     } else {
         $('#login-right').show();
+    }
     $('.boardnames').first().html('');
     $('#title').hide();
     $('#username').text(givenUsername);
@@ -41,6 +42,7 @@ if (givenParameters()) {
         addBoard(givenBoards[x]);
     }
     addBoardListeners(givenUsername);
+
 } else {
     if (authenticated()) {
         PDK.setSession(Cookies.getJSON('session'));
