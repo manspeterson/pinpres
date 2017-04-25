@@ -145,7 +145,7 @@ function getPins(username, boardname) {
         dataType: "jsonp",
         jsonp: "callback",
         success: function(response) {
-            if (!$.trim(response)){ 
+            if (!$.trim(response.data)){ 
                 $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
                 return;
             }
