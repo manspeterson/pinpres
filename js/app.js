@@ -93,7 +93,7 @@ function getMyBoards(){
 }
 function login(e){
         e.preventDefault();
-
+        clearURL();
         PDK.init({
             appId: "4897004159634521129",
             cookie: true
@@ -359,11 +359,7 @@ if (givenParameters()) {
     givenBoards = getUrlParameter('b').split(',');
     if (authenticated()) {
         PDK.setSession(Cookies.getJSON('session'));
-        if (Cookies.get('username') == givenUsername) {
-            $('#home').show();
-        } else {
-            $('#logout').show();
-        }
+        $('#home').show();
     } else {
         $('#login-right').show();
     }

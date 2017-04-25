@@ -38,9 +38,12 @@ body {
     .dark .currentBoard {
     }
 
-    #logout, #login-right, #home, #login-left {
+    #logout, #login-right, #home {
         display:none;
         float:left;
+    }
+    #login-left {
+        display:none;
     }
     
     input {
