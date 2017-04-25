@@ -344,13 +344,15 @@ function hasScrolled() {
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
-        $('header').addClass('nav-down');
+        // $('header').addClass('nav-down');
+        $('header').fadeOut(200);
         
     } else {
         // Scroll Up
         if (lastScrollTop - st > 0){
         //if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('nav-down');
+            // $('header').removeClass('nav-down');
+            $('header').fadeIn(200);
             
             
         }
@@ -372,6 +374,7 @@ var $grid = $('.grid').masonry({
 
 // Check for url parameters
 if (givenParameters()) {
+    history.pushState(null,null,'?u=' + username + '&b=' + boardname);
     givenUsername = getUrlParameter('u');
     givenBoards = getUrlParameter('b').split(',');
     if (authenticated()) {
