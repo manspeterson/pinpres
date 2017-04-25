@@ -108,8 +108,7 @@ body {
         position:absolute;
         top: 0;
         width: 15.50%;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
     }
     .boardnames a {
         display:inline-block;
@@ -118,6 +117,9 @@ body {
     }
     .boardname {
         margin-bottom: 2.5%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .grid-item {
