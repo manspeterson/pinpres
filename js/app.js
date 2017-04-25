@@ -254,7 +254,7 @@ $('#full').click(function() {
     $(this).fadeOut();
 });
 
-var hammer = new Hammer($('#full'));
+var hammer = new Hammer($('#full')[0]);
 hammer.on('swipeleft', showNextPhoto);
 hammer.on('swiperight', showPrevPhoto);
 // $(document).on('swipeleft', showNextPhoto);
