@@ -251,11 +251,16 @@ $('#full').click(function() {
 });
 
 
-$('#full').on('swipeleft', showNextPhoto);
-$('#full').on('swiperight', showPrevPhoto);
+$(document).on('swipeleft', showNextPhoto);
+$(document).on('swiperight', showPrevPhoto);
 
-$('#full').keydown(function(e) {
+$(document).keydown(function(e) {
     switch (e.which) {
+
+        case 17: //ctrl
+            $('body').addClass('colour');
+            break;
+
         case 37: // left
             showPrevPhoto();
             break;
@@ -271,14 +276,6 @@ $('#full').keydown(function(e) {
     e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
-$(document).keydown(function(e){
-    switch (e.which) {
-        case 17: //ctrl
-            $('body').addClass('colour');
-            break;
-    }
-});
-
 $(document).keyup(function(e) {
     switch (e.which) {
         case 17: // cstrl
@@ -287,6 +284,7 @@ $(document).keyup(function(e) {
         default:
             return
     }
+    e.preventDefault();
 });
 
 $('main').on('click', 'img', function() {
