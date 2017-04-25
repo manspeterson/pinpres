@@ -251,6 +251,7 @@ body {
         }
         .grid-item {
             margin: 4%;
+            margin-bottom: 6%;
         }
 
         .boardname {
