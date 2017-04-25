@@ -76,6 +76,7 @@ function getMyBoards(){
     username = Cookies.get('username');
     $('#username').text(username);
     $('#login-left').hide();
+    $('#login-right').hide();
     $('#title').hide();
     $('#home').hide();
     $('#logout').show();
@@ -177,6 +178,24 @@ function getPins(username, boardname) {
     });
 };
 
+function showPrevPhoto(){
+    curr = $('.current').first().closest('.grid-item').prev().find('img');
+    if (!(curr.length == 0)) {
+        $('.current').removeClass('current')
+        $(curr).addClass('current');
+        $('#full img').attr('src', getBig(curr.attr('src')));
+    }
+}
+
+function showNextPhoto(){
+    curr = $('.current').first().closest('.grid-item').next().find('img');
+    if (!(curr.length == 0)) {
+        $('.current').removeClass('current')
+        $(curr).addClass('current');
+        $('#full img').attr('src', getBig(curr.attr('src')));
+    }
+}
+
 
 
 // # LISTENERS
@@ -227,44 +246,37 @@ $('#dark').on('click', function(e) {
 
 $('#full').click(function() {
     $('html').css('overflow', 'auto');
+    $('body').css('overflow', 'auto');
     $(this).fadeOut();
 });
 
-$(document).keydown(function(e) {
+
+$('#full').on('swipeleft', showNextPhoto);
+$('#full').on('swiperight', showPrevPhoto);
+
+$('#full').keydown(function(e) {
     switch (e.which) {
         case 37: // left
-            curr = $('.current').first().closest('.grid-item').prev().find('img');
-            if (!(curr.length == 0)) {
-                $('.current').removeClass('current')
-                $(curr).addClass('current');
-                $('#full img').attr('src', getBig(curr.attr('src')));
-            }
-            break;
-
-        case 38: // up
+            showPrevPhoto();
             break;
 
         case 39: // right
 
-            curr = $('.current').first().closest('.grid-item').next().find('img');
-            if (!(curr.length == 0)) {
-                $('.current').removeClass('current')
-                $(curr).addClass('current');
-                $('#full img').attr('src', getBig(curr.attr('src')));
-            }
-            break;
-
-        case 40: // down
-            break;
-
-        case 17: //ctrl
-            $('body').addClass('colour');
+            showNextPhoto();
             break;
 
         default:
             return; // exit this handler for other keys
     }
-    // e.preventDefault(); // prevent the default action (scroll / move caret)
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+
+$(document).keydown(function(e){
+    switch (e.which) {
+        case 17: //ctrl
+            $('body').addClass('colour');
+            break;
+    }
 });
 
 $(document).keyup(function(e) {
@@ -275,7 +287,7 @@ $(document).keyup(function(e) {
         default:
             return
     }
-})
+});
 
 $('main').on('click', 'img', function() {
     openSlide($(this));
@@ -283,6 +295,7 @@ $('main').on('click', 'img', function() {
     $('.current').removeClass('current')
     $(this).addClass('current');
     $('html').css('overflow', 'hidden');
+    $('body').css('overflow', 'hidden');
 });
 
 $('#boardname').on('keypress', function(e) {
