@@ -38,7 +38,7 @@ body {
     .dark .currentBoard {
     }
 
-    #logout, #login-left, #home, #login-left {
+    #logout, #login-right, #home, #login-left {
         display:none;
         float:left;
     }

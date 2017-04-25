@@ -32,7 +32,7 @@ function clearURL() {
     history.pushState(null,null,'/pinpres/');
 }
 
-function logout(){
+function logout(e){
     e.preventDefault();
     Cookies.remove('session');
     Cookies.remove('username');
@@ -45,7 +45,7 @@ function logout(){
     $grid.masonry('remove', $('.grid-items'));
 };
 
-function goHome() {
+function goHome(e) {
     e.preventDefault();
     clearURL();
     $('#home').hide();
@@ -91,7 +91,7 @@ function getMyBoards(){
     });
 
 }
-function login(){
+function login(e){
         e.preventDefault();
 
         PDK.init({
