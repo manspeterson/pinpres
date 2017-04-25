@@ -374,9 +374,10 @@ var $grid = $('.grid').masonry({
 
 // Check for url parameters
 if (givenParameters()) {
-    history.pushState(null,null,'?u=' + username + '&b=' + boardname);
+    
     givenUsername = getUrlParameter('u');
     givenBoards = getUrlParameter('b').split(',');
+    history.pushState(null,null,'?u=' + givenUsername + '&b=' + getUrlParameter('b'));
     if (authenticated()) {
         PDK.setSession(Cookies.getJSON('session'));
         $('#home').show();
