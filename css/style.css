@@ -126,6 +126,7 @@ body {
         height: auto;
         float: left;
         margin: 4%;
+        margin-bottom: 7.75%;
     }
     
     .grid-image {
@@ -155,6 +156,10 @@ body {
     .big .grid-sizer,
     .big .grid-item {
         width: 22%;
+    }
+
+    .big .grid-item {
+        margin-bottom: 6%;
     }
     
     .big .grid-gutter {
@@ -209,10 +214,11 @@ body {
         .grid-image:hover, .big .grid-image:hover {
             transform: none;
         }
-        
+
         .grid-item {
             width: 11%;
             margin: 2.5%;
+            margin-bottom: 5.25%;
         }
         .grid-sizer {
             width: 11%;
@@ -220,6 +226,7 @@ body {
 
         .big .grid-item {
             margin: 4%;
+            margin-bottom: 6%;
         }
 
         body, header aside, h1 {
