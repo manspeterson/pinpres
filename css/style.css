@@ -268,4 +268,8 @@ body {
             bottom: 3%;
             text-align: right;
         }
+
+        main {
+            margin-top: 35%;
+        }
     }

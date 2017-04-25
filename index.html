@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://manspeterson.github.io/pinpres" />
     <title>Pinpres</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/normalize.min.css">
     <script src="js/jquery-3.2.1.min.js"></script>
     <script>
@@ -41,59 +41,13 @@
             </tr>
         </table>
     </div>
-    <svg class="visuallyHidden">
-
-      <!-- Base 0.0 to 1.0 values on the size of the bounding box.
-           Essentially turn them into viewport units or percentages. -->
-      <filter id="svg-underline-black" primitiveUnits="objectBoundingBox">
-        
-        <!-- Take the original image (the text) and expand it a little
-             horizontally and a little more vertically. Then store it
-             in a new layer. -->
-        <feMorphology in="SourceGraphic" operator="dilate" radius="0.0075 0.05" result="outline"></feMorphology>
-        
-        <!-- Make a blue rectangle that’s 3% tall and 100% wide and expand it
-             a little horizontally and a position it below the original text. -->
-        <feFlood flood-color="black" width="1" height="0.03" x="0" y="0.85" result="underline"></feFlood>
-        
-        <!-- Take the blue rectange and use the expanded text layer to mask
-             out the parts we don’t want. This is where it skips descenders. -->
-        <feComposite in="underline" in2="outline" operator="out" result="underline"></feComposite>
-        
-        <!-- Now stack the underline and the original text for export. -->
-        <feMerge>
-          <feMergeNode in="underline"></feMergeNode>
-          <feMergeNode in="SourceGraphic"></feMergeNode>
-        </feMerge>
-      </filter>
-      <filter id="svg-underline-white" primitiveUnits="objectBoundingBox">
-        
-        <!-- Take the original image (the text) and expand it a little
-             horizontally and a little more vertically. Then store it
-             in a new layer. -->
-        <feMorphology in="SourceGraphic" operator="dilate" radius="0.0075 0.05" result="outline"></feMorphology>
-        
-        <!-- Make a blue rectangle that’s 3% tall and 100% wide and expand it
-             a little horizontally and a position it below the original text. -->
-        <feFlood flood-color="white" width="1" height="0.03" x="0" y="0.85" result="underline"></feFlood>
-        
-        <!-- Take the blue rectange and use the expanded text layer to mask
-             out the parts we don’t want. This is where it skips descenders. -->
-        <feComposite in="underline" in2="outline" operator="out" result="underline"></feComposite>
-        
-        <!-- Now stack the underline and the original text for export. -->
-        <feMerge>
-          <feMergeNode in="underline"></feMergeNode>
-          <feMergeNode in="SourceGraphic"></feMergeNode>
-        </feMerge>
-      </filter>
-    </svg>
 
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
     <script src="js/app.js"></script>
-
+    
 </body>
 
 </html>

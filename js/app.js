@@ -250,9 +250,11 @@ $('#full').click(function() {
     $(this).fadeOut();
 });
 
-
-$(document).on('swipeleft', showNextPhoto);
-$(document).on('swiperight', showPrevPhoto);
+var hammer = new Hammer($('#full'));
+hammer.on('swipeleft', showNextPhoto);
+hammer.on('swiperight', showPrevPhoto);
+// $(document).on('swipeleft', showNextPhoto);
+// $(document).on('swiperight', showPrevPhoto);
 
 $(document).keydown(function(e) {
     switch (e.which) {
