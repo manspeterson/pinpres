@@ -205,6 +205,11 @@ body {
 
 
     @media (max-width: 768px) {
+
+        .grid-image:hover, .big .grid-image:hover {
+            transform: none;
+        }
+        
         .grid-item {
             width: 11%;
             margin: 2.5%;

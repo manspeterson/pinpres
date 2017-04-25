@@ -145,7 +145,10 @@ function getPins(username, boardname) {
         dataType: "jsonp",
         jsonp: "callback",
         success: function(response) {
-
+            if (response.data.pins == null) {
+                $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
+                return;
+            }
             var pins = response.data.pins;
             for (x in pins) {
                 pin = pins[x];
@@ -247,6 +250,7 @@ $('#dark').on('click', function(e) {
 $('#full').click(function() {
     $('html').css('overflow', 'auto');
     $('body').css('overflow', 'auto');
+    $('body').unbind('touchmove');
     $(this).fadeOut();
 });
 
@@ -291,7 +295,7 @@ $(document).keyup(function(e) {
 
 $('main').on('click', 'img', function() {
     openSlide($(this));
-
+    $('body').bind('touchmove', function(e){e.preventDefault()});
     $('.current').removeClass('current')
     $(this).addClass('current');
     $('html').css('overflow', 'hidden');
