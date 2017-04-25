@@ -37,6 +37,11 @@ body {
     .dark .currLight,
     .dark .currentBoard {
     }
+
+    #logout, #login-left, #home, #login-left {
+        display:none;
+        float:left;
+    }
     
     input {
         background: none;

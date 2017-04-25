@@ -1,43 +1,130 @@
+
+// if ((getUrlParameter('u') != false) && (getUrlParameter('b') != false)) {
+//     $('#username').val(getUrlParameter('u'));
+//     $('#boardname').val(getUrlParameter('b'));
+// } else {
+//     $('#username').val('fridamysqvist');
+//     $('#boardname').val('insp');
+// }
+
+
+function authenticated(){
+    if (Cookies.getJSON('session') != undefined) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function givenParameters() {
+    return (getUrlParameter('u') != false) && (getUrlParameter('b') != false);
+}
+
+
+// Check for url parameters
+if (givenParameters()) {
+    givenUsername = getUrlParameter('u');
+    givenBoards = getUrlParameter('b').split(',');
+    if (authenticated()) {
+        PDK.setSession(Cookies.getJSON('session'));
+        if (Cookies.get('username') == givenUsername) {
+            $('#home').show();
+        } else {
+            $('#logout').show();
+        }
+    } else {
+        $('#login-right').show();
+    $('.boardnames').first().html('');
+    $('#title').hide();
+    $('#username').text(givenUsername);
+    for (x in givenBoards) {
+        addBoard(givenBoards[x]);
+    }
+    addBoardListeners(givenUsername);
+} else {
+    if (authenticated()) {
+        PDK.setSession(Cookies.getJSON('session'));
+        getMyBoards();
+    } else {
+        $('#login-left').show();
+    }
+}
+
 if (Cookies.getJSON('session') != undefined){
     PDK.setSession(Cookies.getJSON('session'));
-    setUp();
+    getMyBoards();
     
 }
 
 $('#logout').on('click', logout);
-$('#login').on('click', pinterest);
+$('.login').on('click', login);
+$('#home').on('click', goHome);
+
+function clearURL() {
+    history.pushState(null,null,'/pinpres/');
+}
+
 function logout(){
+    e.preventDefault();
     Cookies.remove('session');
     Cookies.remove('username');
     PDK.logout();
+    $('#logout').hide();
     $('#username').text('');
-    $('#login').show();
+    $('#title').show();
+    $('#login-left').show();
     $('.boardnames').html('');
     $grid.masonry('remove', $('.grid-items'));
 };
 
-function setUp(){
-    PDK.me('boards', { fields: 'name' }, function(response){
-        $('#username').text(Cookies.get('username'));
-        $('#login').hide();
-        for (x in response.data) {
-            div = $('<div class="boardname"/>');
-            a = $('<a href="#"/>');
-            a.text(response.data[x].name.toLowerCase());
-            div.append(a);
-            $('.boardnames').first().append(div);
-        }
-        $('.boardnames a').on('click', function(){
+function goHome() {
+    e.preventDefault();
+    clearURL();
+    $('#home').hide();
+    $('#logout').show();
+    getMyBoards();
+
+}
+
+function addBoard(name) {
+    div = $('<div class="boardname"/>');
+    a = $('<a href="#"/>');
+    a.text(name);
+    div.append(a);
+    $('.boardnames').first().append(div);
+}
+
+function addBoardListeners(user) {
+        $('.boardnames a').on('click', function(e){
+            e.preventDefault();
             $('.currentBoard').removeClass('currentBoard');
             $(this).addClass('currentBoard');
-            getPins(Cookies.get('username'),$(this).text().replace('.','').replace(' ','-'));
+            getPins(user,$(this).text().replace('.','').replace(' ','-'));
         });
         $('.boardnames a').first().trigger('click');
+}
+
+function getMyBoards(){
+    username = Cookies.get('username');
+    $('#username').text(username);
+    $('#login-left').hide();
+    $('#title').hide();
+    $('#home').hide();
+    $('#logout').show();
+    $('.boardnames').first().html('');
+    clearURL();
+    PDK.me('boards', { fields: 'name' }, function(response){
+
+        for (x in response.data) {
+            addBoard(response.data[x].name.toLowerCase());
+        }
+        addBoardListeners(username);
+
     });
 
 }
-function pinterest(){
-
+function login(){
+        e.preventDefault();
 
         PDK.init({
             appId: "4897004159634521129",
@@ -59,7 +146,7 @@ function pinterest(){
             } else {
                 Cookies.set('session', PDK.getSession());
                 Cookies.set('username', response.data.url.replace("https://www.pinterest.com/", '').replace('/',''));
-                setUp();
+                getMyBoards();
             }
         });
         //end get board info
@@ -132,7 +219,7 @@ $grid.imagesLoaded().done(function() {});
 
 
 function getBig(url) {
-    return url.replace('237x', '736x');
+    return url.replace('237x', '736x').replace('http://', 'https://');
 }
 
 function openSlide(photo) {
@@ -205,6 +292,7 @@ $('main').on('click', 'img', function() {
 
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
+    history.pushState(null,null,'?u=' + username + '&b=' + boardname);
     var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
     $.ajax({
         method: "GET",
@@ -275,13 +363,7 @@ $('#boardname').on('keypress', function(e) {
     }
 });
 
-if ((getUrlParameter('u') != false) && (getUrlParameter('b') != false)) {
-    $('#username').val(getUrlParameter('u'));
-    $('#boardname').val(getUrlParameter('b'));
-} else {
-    $('#username').val('fridamysqvist');
-    $('#boardname').val('insp');
-}
+
 // getPins('fridamysqvist', 'insp');
 
 
