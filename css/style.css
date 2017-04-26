@@ -3,6 +3,7 @@ html {
     width: 100vw;
 }
 
+
 body {
         transition: background 0.25s linear;
         font-family: 'Univers LT W04_55 Roman1475960', 'Helvetica Neue', 'Helvetica', sans-serif;
@@ -12,7 +13,7 @@ body {
         /*text-transform: capitalize;*/
         color: black;
         -webkit-font-smoothing: subpixel-antialiased;
-     
+        height: 100vh;
     }
 
 
