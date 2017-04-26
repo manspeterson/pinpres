@@ -37,7 +37,7 @@ function givenParameters() {
 }
 
 function clearURL() {
-    // history.pushState(null,null,'/pinpres/');
+    history.pushState(null,null,'/');
 }
 
 function logout(e){
@@ -55,7 +55,7 @@ function logout(e){
 
 function goHome(e) {
     e.preventDefault();
-    clearURL();
+    // clearURL();
     $('#home').hide();
     $('#logout').show();
     getMyBoards();
@@ -103,6 +103,7 @@ function getMyBoards(){
 function login(e){
         e.preventDefault();
         clearURL();
+
         PDK.init({
             appId: "4897004159634521129",
             cookie: true
@@ -129,6 +130,7 @@ function login(e){
         //end get board info
         });
         //end login
+
    
 
 }
