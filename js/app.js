@@ -179,7 +179,7 @@ function getPins(username, boardname) {
 
                 imgDiv.append(img);
                 div.append(imgDiv);
-                $grid.append(div).masonry('appended', div, true).imagesLoaded().progress(function() {
+                $grid.append(div).masonry('appended', div, true).imagesLoaded().done(function() {
                     $grid.masonry('layout');
                 });
 
