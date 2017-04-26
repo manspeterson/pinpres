@@ -321,6 +321,6 @@ body {
         -chrome-:only(;transform: scale(1.15););
     }
     .grid-item {
-        -chrome-:only(;transition: transform !important;);
+        /*-chrome-:only(;transition: transform !important;);  */
     }
 }
