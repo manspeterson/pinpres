@@ -29,7 +29,7 @@ function givenParameters() {
 }
 
 function clearURL() {
-    history.pushState(null,null,'/pinpres/');
+    // history.pushState(null,null,'/pinpres/');
 }
 
 function logout(e){
