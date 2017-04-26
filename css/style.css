@@ -301,7 +301,7 @@ body {
         transform: scale(1.15);
     }
     .grid-item {
-        transition: transform !important;
+        /*transition: transform !important;*/
     }
 }
 
