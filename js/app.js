@@ -146,6 +146,7 @@ function openSlide(photo) {
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
     // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
+    document.title = 'pinpres / ' + username;
     history.pushState(null,null,'/' + username + '/' + boardname);
     var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
     $.ajax({
