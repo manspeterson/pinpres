@@ -1,19 +1,26 @@
 // # FUNCTIONS
 
 function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+    // var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    //     sURLVariables = sPageURL.split('&'),
+    //     sParameterName,
+    //     i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+    // for (i = 0; i < sURLVariables.length; i++) {
+    //     sParameterName = sURLVariables[i].split('=');
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
+    //     if (sParameterName[0] === sParam) {
+    //         return sParameterName[1] === undefined ? true : sParameterName[1];
+    //     }
+    // }
+    // return false;
+
+
+    if (sParam == 'u') {
+       return window.location.pathname.substring(1,window.location.pathname.length).split(/\/(.+)/)[0].replace('/','');
+    } else if (sParam == 'b') {
+        return window.location.pathname.substring(1,window.location.pathname.length).split(/\/(.+)/)[1].replace(/\/+$/, "");;
     }
-    return false;
 };
 
 function authenticated(){
@@ -25,7 +32,8 @@ function authenticated(){
 }
 
 function givenParameters() {
-    return (getUrlParameter('u') != false) && (getUrlParameter('b') != false);
+    // return (getUrlParameter('u') != false) && (getUrlParameter('b') != false);
+    return window.location.pathname.substring(1,window.location.pathname.length).split(/\/(.+)/).length > 1
 }
 
 function clearURL() {
@@ -137,7 +145,8 @@ function openSlide(photo) {
 
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
-    history.pushState(null,null,'?u=' + username + '&b=' + boardname);
+    // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
+    history.pushState(null,null,'/' + username + '/' + boardname);
     var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
     $.ajax({
         method: "GET",
@@ -377,7 +386,7 @@ if (givenParameters()) {
     
     givenUsername = getUrlParameter('u');
     givenBoards = getUrlParameter('b').split(',');
-    history.pushState(null,null,'?u=' + givenUsername + '&b=' + getUrlParameter('b'));
+    // history.pushState(null,null,'?u=' + givenUsername + '&b=' + getUrlParameter('b'));
     if (authenticated()) {
         PDK.setSession(Cookies.getJSON('session'));
         $('#home').show();
