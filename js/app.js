@@ -92,7 +92,7 @@ function getMyBoards(){
     $('#logout').show();
     $('.boardnames').first().html('');
     clearURL();
-    PDK.me('boards', { fields: 'name' }, function(response){
+    PDK.me('boards', function(response){
 
         for (x in response.data) {
             urlList = response.data[x].url.split('/');
