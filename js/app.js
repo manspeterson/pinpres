@@ -97,7 +97,7 @@ function getMyBoards(){
         for (x in response.data) {
             urlList = response.data[x].url.split('/');
             user = urlList[3]         
-            urlSafe = urlList[4]
+            urlSafe = decodeURI(urlList[4]);
             addBoard(response.data[x].name.toLowerCase(), user, urlSafe);
             
         }
@@ -406,7 +406,7 @@ if (givenParameters()) {
     $('#title').hide();
     $('#username').text(givenUsername);
     for (x in givenBoards) {
-        addBoard(givenBoards[x], givenUsername, decodeURI(givenBoards[x]));
+        addBoard(givenBoards[x].replace('-', ' ')), givenUsername, decodeURI(givenBoards[x]));
     }
     addBoardListeners();
 
