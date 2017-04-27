@@ -390,12 +390,12 @@ function hasScrolled() {
             $(document).height() - nearToBottom) { 
             
                 clearURL();
-                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().text() + '/pins')), {fields: 'url,image', limit : 100}, function(response){
+                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().text() + '/pins')), {fields: 'image,url', limit : 100}, function(response){
 
-                    if (!$.trim(response.data)){ 
-                        $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
-                        return;
-                    }
+                    // if (!$.trim(response.data)){ 
+                    //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
+                    //     return;
+                    // }
                     next = response.page.next;
                     var pins = response.data;
                     for (x in pins) {
