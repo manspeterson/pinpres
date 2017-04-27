@@ -406,7 +406,7 @@ if (givenParameters()) {
     $('#title').hide();
     $('#username').text(givenUsername);
     for (x in givenBoards) {
-        addBoard(decodeURI(givenBoards[x]).replace('-', ' '), givenUsername, decodeURI(givenBoards[x]));
+        addBoard(decodeURI(givenBoards[x]).replace(/\-/g, ' '), givenUsername, decodeURI(givenBoards[x]));
     }
     addBoardListeners();
 
