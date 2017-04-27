@@ -407,7 +407,7 @@ function hasScrolled() {
                         div = $('<div class="grid-item"/>');
                         imgDiv = $('<div class="grid-div-image"/>');
                         img = $('<img class="grid-image"/>');
-                        img.attr('src', pinImage.url.replace('original', '736x'));
+                        img.attr('src', pinImage.url.replace('originals', '736x'));
                         // img.css('visibility', 'hidden');
                         img.attr('width', pinImage.width);
                         img.attr('height', pinImage.height);
