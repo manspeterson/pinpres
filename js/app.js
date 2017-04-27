@@ -343,6 +343,7 @@ var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = $('header').outerHeight();
+var next = 'first';
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -382,7 +383,52 @@ function hasScrolled() {
         }
     }
     lastScrollTop = st;
+
+    var nearToBottom = 100;
+    if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') ){
+        if ($(window).scrollTop() + $(window).height() > 
+            $(document).height() - nearToBottom) { 
+            
+                clearURL();
+                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().text() + '/pins')), {fields: 'url,image', limit : 100}, function(response){
+
+                    if (!$.trim(response.data)){ 
+                        $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
+                        return;
+                    }
+                    next = response.page.next;
+                    var pins = response.data;
+                    for (x in pins) {
+                        pin = pins[x];
+                        pinImage = pin.image;
+                        div = $('<div class="grid-item"/>');
+                        imgDiv = $('<div class="grid-div-image"/>');
+                        img = $('<img class="grid-image"/>');
+                        img.attr('src', pinImage.url.replace('original', '736x'));
+                        // img.css('visibility', 'hidden');
+                        img.attr('width', pinImage.width);
+                        img.attr('height', pinImage.height);
+                        // img.css('max-height', pinImage.height);
+                        div.attr('data-ratio', pinImage.height * 1.0 / pinImage.width);
+                        div.css('background-color', 'gray');
+                        // div.css('max-height', pinImage.height);
+
+                        imgDiv.append(img);
+                        div.append(imgDiv);
+                        $grid.append(div).masonry('appended', div, true).imagesLoaded().done(function() {
+                            $grid.masonry('layout');
+                        });
+
+
+
+                    };
+                }); 
+        }
+
+    }
 }
+
+
 
 // # INIT
 
