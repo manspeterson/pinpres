@@ -111,6 +111,12 @@ body {
         overflow-y: scroll;
 
     }
+    
+    .minimize .boardnames {
+        max-height: 10vh;
+    }
+
+
     .boardnames a {
         /*display:inline-block;*/
         

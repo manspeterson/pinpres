@@ -293,6 +293,12 @@ $(document).keydown(function(e) {
 
             showNextPhoto();
             break;
+        case 77:
+            if ($('body').hasClass('minimize')) {
+                $('body').removeClass('minimize');
+            } else {
+                $('body').addClass('minimize');
+            }
 
         default:
             return; // exit this handler for other keys
