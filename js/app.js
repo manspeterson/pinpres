@@ -64,7 +64,7 @@ function goHome(e) {
 
 function addBoard(name, user = '', urlSafe = '') {
     div = $('<div class="boardname"/>');
-    a = $('<a href="#"/>');
+    a = $('<a href="/' + user + '/' + urlSafe +'"/>');
     a.text(name);
     a.attr('data-user', user);
     a.attr('data-urlBoard', urlSafe);
