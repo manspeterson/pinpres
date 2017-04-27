@@ -384,7 +384,7 @@ function hasScrolled() {
     }
     lastScrollTop = st;
 
-    var nearToBottom = 100;
+    var nearToBottom = 200;
     if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') ){
         if ($(window).scrollTop() + $(window).height() > 
             $(document).height() - nearToBottom) { 
@@ -400,7 +400,7 @@ function hasScrolled() {
                     var pins = response.data;
                     for (x in pins) {
                         pin = pins[x];
-                        pinImage = pin.image;
+                        pinImage = pin.image.original;
                         div = $('<div class="grid-item"/>');
                         imgDiv = $('<div class="grid-div-image"/>');
                         img = $('<img class="grid-image"/>');
