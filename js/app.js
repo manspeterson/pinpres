@@ -78,6 +78,7 @@ function addBoardListeners() {
             $('.currentBoard').removeClass('currentBoard');
             $(this).addClass('currentBoard');
             getPins($(this).attr('data-user'),$(this).attr('data-urlBoard'));
+            fetchMore = true;
         });
         $('.boardnames a').first().trigger('click');
 }
@@ -397,9 +398,14 @@ function hasScrolled() {
                     //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
                     //     return;
                     // }
-                    next = response.page.next;
+
+
+                    
                     fetchMore = false;
-                    setTimeout(function(){fecthMore = true}, 5000);
+                    if (response.page.next != null){
+                        setTimeout(function(){fecthMore = true}, 5000);
+                        next = response.page.next;
+                    }
                     var pins = response.data;
                     for (x in pins) {
                         pin = pins[x];
