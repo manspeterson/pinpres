@@ -344,6 +344,7 @@ var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = $('header').outerHeight();
 var next = 'first';
+var fetchMore = true;
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -383,20 +384,22 @@ function hasScrolled() {
         }
     }
     lastScrollTop = st;
-
+    
     var nearToBottom = 200;
-    if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') ){
+    if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') && fetchMore ){
         if ($(window).scrollTop() + $(window).height() > 
             $(document).height() - nearToBottom) { 
             
                 clearURL();
-                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().text() + '/pins')), {fields: 'image,url', limit : 100}, function(response){
+                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : 100}, function(response){
 
                     // if (!$.trim(response.data)){ 
                     //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
                     //     return;
                     // }
                     next = response.page.next;
+                    fetchMore = false;
+                    setTimeout(function(){fecthMore = true}, 5000);
                     var pins = response.data;
                     for (x in pins) {
                         pin = pins[x];
