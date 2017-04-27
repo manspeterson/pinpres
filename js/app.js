@@ -62,20 +62,22 @@ function goHome(e) {
 
 }
 
-function addBoard(name) {
+function addBoard(name, user = '', urlSafe = '') {
     div = $('<div class="boardname"/>');
     a = $('<a href="#"/>');
     a.text(name);
+    a.attr('data-user', user);
+    a.attr('data-urlBoard', urlSafe);
     div.append(a);
     $('.boardnames').first().append(div);
 }
 
-function addBoardListeners(user) {
+function addBoardListeners() {
         $('.boardnames a').on('click', function(e){
             e.preventDefault();
             $('.currentBoard').removeClass('currentBoard');
             $(this).addClass('currentBoard');
-            getPins(user,$(this).text().replace('.','').replace(' ','-'));
+            getPins($(this).attr('data-user'),$(this).attr('data-urlBoard'));
         });
         $('.boardnames a').first().trigger('click');
 }
@@ -93,9 +95,13 @@ function getMyBoards(){
     PDK.me('boards', { fields: 'name' }, function(response){
 
         for (x in response.data) {
-            addBoard(response.data[x].name.toLowerCase());
+            urlList = response.data[x].url.split('/');
+            user = urlList[3]         
+            urlSafe = urlList[4]
+            addBoard(response.data[x].name.toLowerCase(), user, urlSafe);
+            
         }
-        addBoardListeners(username);
+        addBoardListeners();
 
     });
 
@@ -400,9 +406,9 @@ if (givenParameters()) {
     $('#title').hide();
     $('#username').text(givenUsername);
     for (x in givenBoards) {
-        addBoard(givenBoards[x]);
+        addBoard(givenBoards[x], givenUsername, decodeURI(givenBoards[x]));
     }
-    addBoardListeners(givenUsername);
+    addBoardListeners();
 
 } else {
     if (authenticated()) {
