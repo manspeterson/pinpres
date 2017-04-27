@@ -118,11 +118,15 @@ body {
     }
     .boardname {
         margin-bottom: 2.5%;
+        padding-bottom: 0.5%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
     
+    .boardname:last-child {
+        padding-bottom: 15%;
+    }
     .grid-item {
         line-height: 0;
         width: 8%;
@@ -255,6 +259,10 @@ body {
         .grid-item {
             margin: 4%;
             margin-bottom: 6%;
+        }
+
+        .boardnames {
+            width: 28%;
         }
 
         .boardname {
