@@ -131,7 +131,7 @@ body {
         top: 0;
         width: 15.50%;
         max-height: 93vh;
-        overflow-y: scroll;
+        overflow-y: auto;
 
     }
     
