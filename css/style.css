@@ -69,7 +69,7 @@ body {
         width: 95%;
     }
 
-    header, footer {
+    header {
     	margin-top: 0;
     	margin-left: 2%;
     	margin-bottom: 0;
@@ -78,6 +78,10 @@ body {
     	width: 95%;
     	z-index: 100;
     	transition: opacity 0.2s ease-out;
+    }
+    footer {
+        margin-left: 2%;
+        width: 95%;
     }
 
     .login-for-more {
