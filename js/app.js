@@ -388,13 +388,13 @@ function hasScrolled() {
     lastScrollTop = st;
     
     var nearToBottom = 500;
-    if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') && fetchMore ){
+    if ((PDK.getSession() != null) && fetchMore ){
         if ($(window).scrollTop() + $(window).height() > 
             $(document).height() - nearToBottom) { 
             
                 clearURL();
                 fetchMore = false;
-                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : 100}, function(response){
+                PDK.request((next.length > 10 ? next : ('/v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : (next == 'first' ? 100 : 50)}, function(response){
 
                     // if (!$.trim(response.data)){ 
                     //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
