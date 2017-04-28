@@ -51,6 +51,7 @@ function logout(e){
     $('#login-left').show();
     $('.boardnames').html('');
     $grid.masonry('remove', $('.grid-items'));
+    $('.grid-item').remove();
 };
 
 function goHome(e) {
@@ -161,6 +162,8 @@ function openSlide(photo) {
 
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
+    $('.grid-item').remove();
+
     // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
     document.title = 'pinpres / ' + username;
     history.pushState(null,null,'/' + username + '/' + boardname);
