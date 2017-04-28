@@ -51,7 +51,7 @@ function logout(e){
     $('#login-left').show();
     $('.boardnames').html('');
     $grid.masonry('remove', $('.grid-items'));
-    $('.grid-item').remove();
+    setTimeout(function(){$('.grid-item').remove()},200);
 };
 
 function goHome(e) {
@@ -162,7 +162,7 @@ function openSlide(photo) {
 
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
-    $('.grid-item').remove();
+    setTimeout(function(){$('.grid-item').remove()},200);
 
     // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
     document.title = 'pinpres / ' + username;
