@@ -387,7 +387,7 @@ function hasScrolled() {
     }
     lastScrollTop = st;
     
-    var nearToBottom = 200;
+    var nearToBottom = 500;
     if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') && fetchMore ){
         if ($(window).scrollTop() + $(window).height() > 
             $(document).height() - nearToBottom) { 
