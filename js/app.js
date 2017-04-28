@@ -394,7 +394,7 @@ function hasScrolled() {
             
                 clearURL();
                 fetchMore = false;
-                PDK.request((next.length > 10 ? next : ('/v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : (next == 'first' ? 100 : 50)}, function(response){
+                PDK.request((next.length > 10 ? next.replace('limit=100', 'limit=50') : ('/v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : 100}, function(response){
 
                     // if (!$.trim(response.data)){ 
                     //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
@@ -408,8 +408,9 @@ function hasScrolled() {
                     
                     
                     if (response.page.next != null){
-                        setTimeout(function(){fecthMore = true}, 5000);
+                        setTimeout(function(){fetchMore = true}, 5000);
                         next = response.page.next;
+
                     }
                     var pins = response.data;
 
