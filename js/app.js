@@ -393,6 +393,7 @@ function hasScrolled() {
             $(document).height() - nearToBottom) { 
             
                 clearURL();
+                fetchMore = false;
                 PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : 100}, function(response){
 
                     // if (!$.trim(response.data)){ 
@@ -405,7 +406,7 @@ function hasScrolled() {
                         x = 50;
                     }
                     
-                    fetchMore = false;
+                    
                     if (response.page.next != null){
                         setTimeout(function(){fecthMore = true}, 5000);
                         next = response.page.next;
