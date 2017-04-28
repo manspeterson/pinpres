@@ -78,7 +78,8 @@ function addBoardListeners() {
             $('.currentBoard').removeClass('currentBoard');
             $(this).addClass('currentBoard');
             getPins($(this).attr('data-user'),$(this).attr('data-urlBoard'));
-            // fetchMore = true;
+            fetchMore = true;
+            next = 'first';
         });
         $('.boardnames a').first().trigger('click');
 }
@@ -344,8 +345,8 @@ var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = $('header').outerHeight();
-// var next = 'first';
-// var fetchMore = true;
+var next = 'first';
+var fetchMore = true;
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -386,55 +387,59 @@ function hasScrolled() {
     }
     lastScrollTop = st;
     
-    // var nearToBottom = 200;
-    // if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') && fetchMore ){
-    //     if ($(window).scrollTop() + $(window).height() > 
-    //         $(document).height() - nearToBottom) { 
+    var nearToBottom = 200;
+    if ((PDK.getSession() != null) && $('#username').text() == Cookies.get('username') && fetchMore ){
+        if ($(window).scrollTop() + $(window).height() > 
+            $(document).height() - nearToBottom) { 
             
-    //             clearURL();
-    //             PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : 100}, function(response){
+                clearURL();
+                PDK.request((next.length > 10 ? next : ('v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins')), {fields: 'image,url', limit : 100}, function(response){
 
-    //                 // if (!$.trim(response.data)){ 
-    //                 //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
-    //                 //     return;
-    //                 // }
+                    // if (!$.trim(response.data)){ 
+                    //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
+                    //     return;
+                    // }
 
-
+                    var x = 0;
+                    if (next == 'first') {
+                        x = 50;
+                    }
                     
-    //                 fetchMore = false;
-    //                 if (response.page.next != null){
-    //                     setTimeout(function(){fecthMore = true}, 5000);
-    //                     next = response.page.next;
-    //                 }
-    //                 var pins = response.data;
-    //                 for (x in pins) {
-    //                     pin = pins[x];
-    //                     pinImage = pin.image.original;
-    //                     div = $('<div class="grid-item"/>');
-    //                     imgDiv = $('<div class="grid-div-image"/>');
-    //                     img = $('<img class="grid-image"/>');
-    //                     img.attr('src', pinImage.url.replace('originals', '736x'));
-    //                     // img.css('visibility', 'hidden');
-    //                     img.attr('width', pinImage.width);
-    //                     img.attr('height', pinImage.height);
-    //                     // img.css('max-height', pinImage.height);
-    //                     div.attr('data-ratio', pinImage.height * 1.0 / pinImage.width);
-    //                     div.css('background-color', 'gray');
-    //                     // div.css('max-height', pinImage.height);
+                    fetchMore = false;
+                    if (response.page.next != null){
+                        setTimeout(function(){fecthMore = true}, 5000);
+                        next = response.page.next;
+                    }
+                    var pins = response.data;
 
-    //                     imgDiv.append(img);
-    //                     div.append(imgDiv);
-    //                     $grid.append(div).masonry('appended', div, true).imagesLoaded().done(function() {
-    //                         $grid.masonry('layout');
-    //                     });
+                    for (x; x < pins.length; x++) {
+                        pin = pins[x];
+                        pinImage = pin.image.original;
+                        div = $('<div class="grid-item"/>');
+                        imgDiv = $('<div class="grid-div-image"/>');
+                        img = $('<img class="grid-image"/>');
+                        img.attr('src', pinImage.url.replace('originals', '736x').replace('.png','.jpg').replace('.gif','.jpg'));
+                        // img.css('visibility', 'hidden');
+                        img.attr('width', pinImage.width);
+                        img.attr('height', pinImage.height);
+                        // img.css('max-height', pinImage.height);
+                        div.attr('data-ratio', pinImage.height * 1.0 / pinImage.width);
+                        div.css('background-color', 'gray');
+                        // div.css('max-height', pinImage.height);
+
+                        imgDiv.append(img);
+                        div.append(imgDiv);
+                        $grid.append(div).masonry('appended', div, true).imagesLoaded().done(function() {
+                            $grid.masonry('layout');
+                        });
 
 
 
-    //                 };
-    //             }); 
-    //     }
+                    }
+                }); 
+        }
 
-    // }
+    }
 }
 
 
