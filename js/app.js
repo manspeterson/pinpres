@@ -163,52 +163,53 @@ function openSlide(photo) {
 
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
-    setTimeout(function(){$('.grid-item').remove()},50);
+    setTimeout(function(){$('.grid-item').remove()
 
-    // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
-    document.title = 'pinpres / ' + username;
-    history.pushState(null,null,'/' + username + '/' + boardname);
-    var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
-    $.ajax({
-        method: "GET",
-        url: $url,
-        dataType: "jsonp",
-        jsonp: "callback",
-        success: function(response) {
-            if (!$.trim(response.data)){ 
-                $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
-                return;
+        // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
+        document.title = 'pinpres / ' + username;
+        history.pushState(null,null,'/' + username + '/' + boardname);
+        var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
+        $.ajax({
+            method: "GET",
+            url: $url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            success: function(response) {
+                if (!$.trim(response.data)){ 
+                    $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
+                    return;
+                }
+                var pins = response.data.pins;
+                for (x in pins) {
+                    pin = pins[x];
+                    pinImage = pin.images['237x'];
+                    div = $('<div class="grid-item"/>');
+                    imgDiv = $('<div class="grid-div-image"/>');
+                    img = $('<img class="grid-image"/>');
+                    img.attr('src', getBig(pinImage.url));
+                    // img.css('visibility', 'hidden');
+                    img.attr('width', pinImage.width);
+                    img.attr('height', pinImage.height);
+                    // img.css('max-height', pinImage.height);
+                    div.attr('data-ratio', pinImage.height * 1.0 / pinImage.width);
+                    div.css('background-color', pin.dominant_color);
+                    // div.css('max-height', pinImage.height);
+
+                    imgDiv.append(img);
+                    div.append(imgDiv);
+                    $grid.append(div).masonry('appended', div, true).imagesLoaded().done(function() {
+                        $grid.masonry('layout');
+                    });
+
+
+                }
+            },
+            error: function(error) {
+                console.log(error);
             }
-            var pins = response.data.pins;
-            for (x in pins) {
-                pin = pins[x];
-                pinImage = pin.images['237x'];
-                div = $('<div class="grid-item"/>');
-                imgDiv = $('<div class="grid-div-image"/>');
-                img = $('<img class="grid-image"/>');
-                img.attr('src', getBig(pinImage.url));
-                // img.css('visibility', 'hidden');
-                img.attr('width', pinImage.width);
-                img.attr('height', pinImage.height);
-                // img.css('max-height', pinImage.height);
-                div.attr('data-ratio', pinImage.height * 1.0 / pinImage.width);
-                div.css('background-color', pin.dominant_color);
-                // div.css('max-height', pinImage.height);
 
-                imgDiv.append(img);
-                div.append(imgDiv);
-                $grid.append(div).masonry('appended', div, true).imagesLoaded().done(function() {
-                    $grid.masonry('layout');
-                });
-
-
-            }
-        },
-        error: function(error) {
-            console.log(error);
-        }
-
-    });
+        });
+    },200);
 };
 
 function showPrevPhoto(){
