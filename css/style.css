@@ -25,7 +25,8 @@ body {
     a:hover,
     .currGrid,
     .currLight,
-    .currentBoard {
+    .currentBoard,
+    .currentInfo {
           text-decoration: line-through;
           -webkit-text-decoration-skip: ink;
           
@@ -89,6 +90,16 @@ body {
     }
 
     #login-for-more {
+        display: none;
+    }
+
+    #info {
+        position: absolute;
+        width: 33.5%;
+        right: 2.8%;
+        line-height: 1.4;
+        text-align: left;
+        padding-top: 6%;
         display: none;
     }
 

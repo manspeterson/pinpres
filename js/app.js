@@ -299,6 +299,7 @@ $('#logout').on('click', logout);
 $('.login').on('click', login);
 $('#home').on('click', goHome);
 $('#login-for-more').on('click', login);
+$('#infoBtn').on('click',function(e){e.preventDefault();$('#info').toggle();$(this).toggleClass('currentInfo');});
 $('#small').on('click', function(e) {
     e.preventDefault();
 
@@ -446,6 +447,8 @@ function hasScrolled() {
         // Scroll Down
         // $('header').addClass('nav-down');
         $('header').fadeOut(200);
+        $('#info').hide();
+        $('#infoBtn').removeClass('currentInfo');
         
     } else {
         // Scroll Up
