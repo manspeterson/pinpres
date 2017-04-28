@@ -110,6 +110,7 @@ function getMyBoards(){
 
 }
 function login(e){
+        self.item = $(this);
         e.preventDefault();
         prevURL = window.location.pathname;
         clearURL();
@@ -134,10 +135,10 @@ function login(e){
             } else {
                 Cookies.set('session', PDK.getSession());
                 Cookies.set('username', response.data.url.replace("https://www.pinterest.com/", '').replace('/',''));
-                if ($(this).attr('id') == 'login-left') {
+                if (self.item.attr('id') == 'login-left') {
                     getMyBoards();
                 } else {
-                    $(this).hide();
+                    self.item.hide();
                     $('#home').show();
                 }
             }
