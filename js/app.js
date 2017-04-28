@@ -110,6 +110,7 @@ function getMyBoards(){
 }
 function login(e){
         e.preventDefault();
+        prevURL = window.location.pathname;
         clearURL();
 
         PDK.init({
@@ -132,7 +133,12 @@ function login(e){
             } else {
                 Cookies.set('session', PDK.getSession());
                 Cookies.set('username', response.data.url.replace("https://www.pinterest.com/", '').replace('/',''));
-                getMyBoards();
+                if ($(this).attr('id') == 'login-left') {
+                    getMyBoards();
+                } else {
+                    $(this).hide();
+                    $('#home').show();
+                }
             }
         });
         //end get board info
