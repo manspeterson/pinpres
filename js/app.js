@@ -163,7 +163,7 @@ function openSlide(photo) {
 
 function getPins(username, boardname) {
     $grid.masonry('remove', $('.grid-item'));
-    setTimeout(function(){$('.grid-item').remove()},200);
+    setTimeout(function(){$('.grid-item').remove()},50);
 
     // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
     document.title = 'pinpres / ' + username;
