@@ -45,12 +45,13 @@ function logout(e){
     Cookies.remove('session');
     Cookies.remove('username');
     PDK.logout();
+    history.pushState(null,null,'/');
     $('#logout').hide();
     $('#username').text('');
     $('#title').show();
     $('#login-left').show();
     $('.boardnames').html('');
-    $grid.masonry('remove', $('.grid-items'));
+    $grid.masonry('remove', $('.grid-item'));
     $('.grid-item').remove();
 };
 
