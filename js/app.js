@@ -223,7 +223,7 @@ function getMorePins(){
      prevURL = window.location.pathname;
                 clearURL();
                 fetchMore = false;
-                PDK.request('/v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins', {fields: 'image,url', limit : (next == 'first' ? 100 : 50), cursor : (next == 'first' ? '' : next)}, function(response){
+                PDK.request('/v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins', {fields: 'image,url,color', limit : (next == 'first' ? 100 : 50), cursor : (next == 'first' ? '' : next)}, function(response){
 
                     // if (!$.trim(response.data)){ 
                     //     $grid.html("Ooops. Pinterest doesn't seem to respond. <br/>Please reload the page and try again");
@@ -256,7 +256,7 @@ function getMorePins(){
                         img.attr('height', pinImage.height);
                         // img.css('max-height', pinImage.height);
                         div.attr('data-ratio', pinImage.height * 1.0 / pinImage.width);
-                        div.css('background-color', 'gray');
+                        div.css('background-color', pin.color);
                         // div.css('max-height', pinImage.height);
 
                         imgDiv.append(img);
