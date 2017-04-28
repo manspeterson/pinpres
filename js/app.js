@@ -446,7 +446,7 @@ function hasScrolled() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         // $('header').addClass('nav-down');
-        $('header').fadeOut(100);
+        $('header').fadeOut(50);
         $('#info').fadeOut(100);
         $('#infoBtn').removeClass('currentInfo');
         
