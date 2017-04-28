@@ -140,6 +140,7 @@ function login(e){
                 } else {
                     self.item.hide();
                     $('#home').show();
+                    history.pushState(null,null, prevURL);
                 }
             }
         });
@@ -401,7 +402,7 @@ function hasScrolled() {
     if ((PDK.getSession() != null) && fetchMore ){
         if ($(window).scrollTop() + $(window).height() > 
             $(document).height() - nearToBottom) { 
-            
+                prevURL = window.location.pathname;
                 clearURL();
                 fetchMore = false;
                 PDK.request('/v1/boards/' + $('#username').text() + '/' + $('.currentBoard').first().attr('data-urlBoard') + '/pins', {fields: 'image,url', limit : (next == 'first' ? 100 : 50), cursor : (next == 'first' ? '' : next)}, function(response){
@@ -450,6 +451,7 @@ function hasScrolled() {
 
                     }
                 }); 
+                history.pushState(null,null, prevURL);
         }
 
     }
