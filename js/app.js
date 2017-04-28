@@ -446,8 +446,8 @@ function hasScrolled() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         // $('header').addClass('nav-down');
-        $('header').fadeOut(200);
-        $('#info').hide();
+        $('header').fadeOut(100);
+        $('#info').fadeOut(100);
         $('#infoBtn').removeClass('currentInfo');
         
     } else {
@@ -455,7 +455,7 @@ function hasScrolled() {
         if (lastScrollTop - st > 0){
         //if(st + $(window).height() < $(document).height()) {
             // $('header').removeClass('nav-down');
-            $('header').fadeIn(200);
+            $('header').fadeIn(100);
             
             
         }

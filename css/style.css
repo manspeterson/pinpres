@@ -247,6 +247,10 @@ body {
 
     @media (max-width: 768px) {
 
+        main {
+            margin-top: 28%;
+        }
+
         .grid-image:hover, .big .grid-image:hover {
             transform: none;
         }
@@ -298,6 +302,11 @@ body {
             margin-bottom: 15.5%;
         }
 
+        #info {
+            width: 60.5%;
+            right: 2.6%;
+        }
+
         body, header aside, h1 {
             font-size: 10px;
             font-size: 2.6vw;
@@ -327,7 +336,7 @@ body {
         }
 
         main {
-            margin-top: 35%;
+            margin-top: 38%;
         }
     }
 
