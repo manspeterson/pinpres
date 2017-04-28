@@ -141,7 +141,12 @@ function login(e){
                 } else {
                     self.item.hide();
                     $('#home').show();
-                    history.pushState(null,null, prevURL);
+                    $('#login-right').hide();
+                    if (self.item.attr('id') == 'login-for-more'){
+                        getMorePins();
+                    } else {
+                        history.pushState(null,null, prevURL);
+                    }
                 }
             }
         });
@@ -293,7 +298,7 @@ function showNextPhoto(){
 $('#logout').on('click', logout);
 $('.login').on('click', login);
 $('#home').on('click', goHome);
-$('#login-for-more').on('click', function(e){login(e);getMorePins()});
+$('#login-for-more').on('click', login);
 $('#small').on('click', function(e) {
     e.preventDefault();
 
