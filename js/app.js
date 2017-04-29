@@ -168,13 +168,15 @@ function openSlide(photo) {
     // setTimeout(function(){$('#full').trigger('focus').trigger('scroll');console.log('hej')}, 260);
 }
 
-function getPins(username, boardname) {
+function getPins(username, boardname, root = false) {
     $grid.masonry('remove', $('.grid-item'));
     $('.grid-item').remove();
 
     // history.pushState(null,null,'?u=' + username + '&b=' + boardname);
-    document.title = 'pinpres / ' + username;
-    history.pushState(null,null,'/' + username + '/' + boardname);
+    if (!root) {
+        document.title = 'pinpres / ' + username;
+        history.pushState(null,null,'/' + username + '/' + boardname);
+    }
     var $url = 'https://api.pinterest.com/v3/pidgets/boards/' + username + '/' + boardname + '/pins';
     $.ajax({
         method: "GET",
@@ -514,6 +516,7 @@ if (givenParameters()) {
         getMyBoards();
     } else {
         $('#login-left').show();
+        getPins('manspeterson', 'product');
     }
 }
 
