@@ -53,6 +53,7 @@ function logout(e){
     $('.boardnames').html('');
     $grid.masonry('remove', $('.grid-item'));
     $('.grid-item').remove();
+    getPins('manspeterson', 'product');
 };
 
 function goHome(e) {
