@@ -53,7 +53,7 @@ function logout(e){
     $('.boardnames').html('');
     $grid.masonry('remove', $('.grid-item'));
     $('.grid-item').remove();
-    getPins('manspeterson', 'product');
+    getPins('manspeterson', 'product', true);
 };
 
 function goHome(e) {
@@ -517,7 +517,7 @@ if (givenParameters()) {
         getMyBoards();
     } else {
         $('#login-left').show();
-        getPins('manspeterson', 'product');
+        getPins('manspeterson', 'product', true);
     }
 }
 
