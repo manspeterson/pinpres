@@ -54,7 +54,7 @@
         <aside class="boards"><a href="#" id="login-left" class="login">log in</a>
             <div class="boardnames"></div>
         </aside>
-        <aside class="size"><a href="#" id="small" class="currGrid">small</a> / <a href="#" id="big">big</a></aside>
+        <aside class="size"><a href="#" id="big" class="currGrid">big</a> / <a href="#" id="small">small</a></aside>
         <aside class="light"><a href="#" id="light" class="currLight">light</a> / <a href="#" id="dark">dark</a></aside>
         <aside class="right"><a href="#" id="login-right" class="login">log in</a><a href="#" id="home">home</a><a href="#" id="logout">log out</a><a href="/info" id="infoBtn" class="info">?</a>
             <div id="info">pinpres is a presentation tool for pinterest
@@ -65,7 +65,7 @@
                 <br>– <a href="javascript:if(path=window.location.pathname.split(%22/%22),3==path.length)%7Bboards=%22%22,h=document.getElementsByClassName(%22ProfileBoardCard%22);for(var%20x=0;x%3Ch.length;x++)cb=h%5Bx%5D.childNodes%5B0%5D.href.split(%22/%22),cb%5Bcb.length-3%5D==path%5B1%5D&&(boards+=decodeURI(cb%5Bcb.length-2%5D)+%22,%22);boards=boards.substring(0,boards.length-1),location.href=%22https://www.pinpres.com%22+window.location.pathname+boards%7Delse%204==path.length?location.href=%22https://www.pinpres.com%22+decodeURI(window.location.pathname):alert(%22Pinpres%20couldn't%20find%20a%20user%20or%20board.%20Please%20make%20sure%20you%20are%20on%20a%20user%20or%20board%20page%22);" target="_blank">bookmark this</a> for use on <a href="https://pinterest.com" target="_blank">pinterest.com</a></div>
         </aside>
     </header>
-    <main id="grid" class="grid small">
+    <main id="grid" class="grid small big">
         <div class="grid-sizer"></div>
         <div class="grid-gutter"></div>
     </main>
