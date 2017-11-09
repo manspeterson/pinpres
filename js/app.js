@@ -159,8 +159,9 @@ function login(e){
 
 }
 
-function getBig(url) {
-    return url.replace('237x', '736x').replace('http://', 'https://');
+function getBig(url, gif = false) {
+	if (!gif) return url.replace('237x', '736x').replace('http://', 'https://');
+	else return return url.replace('237x', 'originals').replace('http://', 'https://').replace('.jpg','.gif');
 }
 
 function openSlide(photo) {
@@ -196,7 +197,8 @@ function getPins(username, boardname, root = false) {
                 div = $('<div class="grid-item"/>');
                 imgDiv = $('<div class="grid-div-image"/>');
                 img = $('<img class="grid-image"/>');
-                img.attr('src', getBig(pinImage.url));
+                isGif = pin.is_video ? true : false;
+                img.attr('src', getBig(pinImage.url, isGif));
                 // img.css('visibility', 'hidden');
                 img.attr('width', pinImage.width);
                 img.attr('height', pinImage.height);
