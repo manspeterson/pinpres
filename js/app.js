@@ -255,7 +255,8 @@ function getMorePins(){
                         div = $('<div class="grid-item"/>');
                         imgDiv = $('<div class="grid-div-image"/>');
                         img = $('<img class="grid-image"/>');
-                        img.attr('src', pinImage.url.replace('originals', '736x').replace('.png','.jpg')); //.replace('.gif','.jpg'));
+                        if (pinImage.url.endsWith('.gif')) img.attr('src', pinImage.url);
+                        else img.attr('src', pinImage.url.replace('originals', '736x').replace('.png','.jpg').replace('.gif','.jpg'));
                         // img.css('visibility', 'hidden');
                         img.attr('width', pinImage.width);
                         img.attr('height', pinImage.height);
