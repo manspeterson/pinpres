@@ -197,7 +197,7 @@ function getPins(username, boardname, root = false) {
                 div = $('<div class="grid-item"/>');
                 imgDiv = $('<div class="grid-div-image"/>');
                 img = $('<img class="grid-image"/>');
-                isGif = pin.is_video ? true : false;
+                isGif = pin.embed != null ? true : false;
                 img.attr('src', getBig(pinImage.url, isGif));
                 // img.css('visibility', 'hidden');
                 img.attr('width', pinImage.width);
