@@ -161,7 +161,7 @@ function login(e){
 
 function getBig(url, gif = false) {
 	if (!gif) return url.replace('237x', '736x').replace('http://', 'https://');
-	else return return url.replace('237x', 'originals').replace('http://', 'https://').replace('.jpg','.gif');
+	else return url.replace('237x', 'originals').replace('http://', 'https://').replace('.jpg','.gif');
 }
 
 function openSlide(photo) {
