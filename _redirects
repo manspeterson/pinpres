@@ -1,4 +1,4 @@
 # Rewrite a path
-https://manspeterson.se/*	  https://www.pinpres.com/:splat 200!
+https://manspeterson.se/*	  https://www.pinpres.com/:splat 301
 /*    /   200
 https://test.pinpres.com/     https://www.pinpres.com/test    301
