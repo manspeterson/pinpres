@@ -255,7 +255,7 @@ function getMorePins(){
 
 
                     for (x; x < _pins.length; x++) {
-                        newPin = {"description" : pins[x].description, "domain" : pins[x].domain, "link" : pins[x].link, "image" : pins[x].image.original;
+                        newPin = {"description" : pins[x].description, "domain" : pins[x].domain, "link" : pins[x].link, "image" : pins[x].image.original};
                         pins.push(newPin);
                         pin = _pins[x];
                         pinImage = pinpin.image.original;
