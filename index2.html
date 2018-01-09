@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="canonical" href="https://www.pinpres.com" />
+    <!-- 
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    open source initiative hosted on netlify.
+    designed & engineered by måns peterson of art.33
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    -->
+    <title>pinpres / </title>
+    <meta name="description" content="pinpres is a minimalistic presentation tool for pinterest boards." />
+    <link rel="apple-touch-icon" href="/assets/icon.jpg">
+    <link rel="icon" type="image/jpg" href="/assets/icon.jpg">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="a presentation tool for pinterest">
+    <meta name="twitter:site" content="@mnsp">
+    <meta name="twitter:title" content="pinpres">
+    <meta name="twitter:description" content="pinpres is a minimalistic presentation tool for pinterest boards.">
+    <meta name="twitter:creator" content="@mnsp">
+    <meta name="twitter:image" content="https://www.pinpres.com/assets/pinpres-ss.jpg">
+    <!-- Open Graph data -->
+    <meta property="og:title" content="pinpres" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.pinpres.com" />
+    <meta property="og:image" content="https://www.pinpres.com/assets/pinpres-ss.jpg" />
+    <meta property="og:description" content="pinpres is a minimalistic presentation tool for pinterest boards." />
+    <meta property="og:site_name" content="pinpres" />
+    <!-- <meta property="fb:admins" content="Facebook numeric ID" /> -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
+    </script>
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/6ad9ae12-1ba3-45d4-a218-e666218a4c2a.js"></script>
+    <script src="https://assets.pinterest.com/sdk/sdk.js"></script>
+    <script src="/js/js.cookie.js"></script>
+    <script src="/js/masonry.pkgd.min.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1><span id="title">pinpres</span><span id="username"></span></h1>
+        <aside class="boards"><a href="#" id="login-left" class="login">log in</a>
+            <div class="boardnames"></div>
+        </aside>
+        <aside class="size"><a href="#" id="big" class="currGrid">big</a> / <a href="#" id="small">small</a></aside>
+        <aside class="light"><a href="#" id="light" class="currLight">light</a> / <a href="#" id="dark">dark</a></aside>
+        <aside class="right"><a href="#" id="login-right" class="login">log in</a><a href="#" id="home">home</a><a href="#" id="logout">log out</a><a href="/info" id="infoBtn" class="info">?</a>
+            <div id="info">pinpres is a presentation tool for pinterest
+                <br>developed by måns peterson of <a href="http://art33.se" target="_blank">art.33</a>
+                <br>
+                <br>– hold ctrl for color scheme
+                <br>– navigate with ← &amp; → in fullscreen
+                <br>– <a href="javascript:if(path=window.location.pathname.split(%22/%22),3==path.length)%7Bboards=%22%22,h=document.getElementsByClassName(%22ProfileBoardCard%22);for(var%20x=0;x%3Ch.length;x++)cb=h%5Bx%5D.childNodes%5B0%5D.href.split(%22/%22),cb%5Bcb.length-3%5D==path%5B1%5D&&(boards+=decodeURI(cb%5Bcb.length-2%5D)+%22,%22);boards=boards.substring(0,boards.length-1),location.href=%22https://www.pinpres.com%22+window.location.pathname+boards%7Delse%204==path.length?location.href=%22https://www.pinpres.com%22+decodeURI(window.location.pathname):alert(%22Pinpres%20couldn't%20find%20a%20user%20or%20board.%20Please%20make%20sure%20you%20are%20on%20a%20user%20or%20board%20page%22);" target="_blank">bookmark this</a> for use on <a href="https://pinterest.com" target="_blank">pinterest.com</a></div>
+        </aside>
+    </header>
+    <main id="grid" class="grid small big">
+        <div class="grid-sizer"></div>
+        <div class="grid-gutter"></div>
+    </main>
+    <footer>
+        <div class="login-for-more"><a id="login-for-more" href="/login">log in for more</a></div>
+    </footer>
+    <div id="full">
+        <table id="overlay">
+            <tr>
+                <td><img src="" alt="" /></td>
+            </tr>
+        </table>
+    </div>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <script type="text/javascript" src="/js/hammer.min.js"></script>
+    <script src="/js/app2.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98276919-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+
+</html>
